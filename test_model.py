@@ -1,8 +1,12 @@
-import joblib
+from services.feature_service import create_features
+from services.forecast_service import predict
 
-print("Loading model...")
+df = create_features("2025-06-29 12:30:00")
 
-model = joblib.load("models/xgb_model.pkl")
+print("Features:")
+print(df)
 
-print("Loaded!")
-print(type(model))
+prediction = predict(df)
+
+print("\nPrediction:")
+print(prediction)
